@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/start-stream', (req, res) => {
-    const ffmpeg = spawn('C:/web/laby_streaming_transfer/ffmpeg.exe', [
+    const ffmpeg = spawn(__dirname + '/ffmpeg.exe', [
         '-i', 'rtsp://192.168.0.153/video1',
         '-c:v', 'copy',
         '-c:a', 'aac',
