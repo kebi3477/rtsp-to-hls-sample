@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTSP to HLS Streaming</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+    <video id="video-player" controls></video>
+    <script>
+        const videoPlayer = document.getElementById('video-player');
+    
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource('/public/live/stream.m3u8');
+            hls.attachMedia(videoPlayer);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                videoPlayer.play();
+            });
+        }
+    </script>    
+</body>
+</html>
